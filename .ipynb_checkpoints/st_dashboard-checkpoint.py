@@ -19,14 +19,14 @@ st.markdown("The dashboard will help with the expansion problems CitiBike curren
 
 ####################### Import data #########################################
 
-df = pd.read_csv('reduced_data_to_plot.csv', index_col = 0)
+df = pd.read_csv('df_daily_dualaxis.csv', index_col = 0)
 top20 = pd.read_csv('top20.csv', index_col = 0)
 
 ############################ DEFINE THE CHARTS ############################
 
 # Bar chart 
 
-fig = go.Figure(go.Bar(x = top20['start_station_name'], y = top20['value'], marker = {'color' : top20['value'], 'colorscale' : 'BuGn'}))
+fig = go.Figure(go.Bar(x = top20['start_station_name'], y = top20['value'], marker = {'color' : top20['value'], 'colorscale' : 'Blues'}))
 fig.update_layout(
     title = 'Top 20 Most Popular Bike Stations in New York',
     xaxis_title = 'Start Stations', 
@@ -40,11 +40,11 @@ st.plotly_chart(fig, use_container_width = True)
 fig_2 = make_subplots(specs = [[{"secondary_y": True}]])
 
 fig_2.add_trace(
-go.Scatter(x = df['date'], y = df['bike_rides_daily'], name = 'Daily bike rides', marker={'color': df['bike_rides_daily'], 'color': 'green'}), secondary_y = False
+go.Scatter(x = df['date'], y = df['bike_rides_daily'], name = 'Daily bike rides', marker={'color': df['bike_rides_daily'], 'color': 'darkblue'}), secondary_y = False
 )
 
 fig_2.add_trace(
-go.Scatter(x = df['date'], y = df['avgTemp'], name = 'Daily temperature', marker={'color': df['avgTemp'], 'color': 'seagreen'}), secondary_y = True
+go.Scatter(x = df['date'], y = df['avgTemp'], name = 'Daily temperature', marker={'color': df['avgTemp'], 'color': 'firebrick'}), secondary_y = True
 )
 
 fig_2.update_layout(
@@ -54,3 +54,15 @@ fig_2.update_layout(
     height = 800
 )
 st.plotly_chart(fig_2, use_container_width=True)
+
+### Add the map  ###
+
+path_to_html = "CitiBike Trips Aggregated.html"
+
+# Read file and keep in variable 
+with open(path_to_html, 'r') as f:
+    html_data = f.read()
+
+## Show in web page 
+st.header("Aggregated Bike Trips in New York")
+st.components.v1.html(html_data,height = 1000)
