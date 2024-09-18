@@ -36,13 +36,16 @@ df_hist = pd.read_csv('hist_data_small.csv')
 ### INTRO PAGE
 
 if page == "Introduction":
-    st.markdown("#### This dashboard aims at providing helpful insights on the expansion problems Citi Bikes currently faces.")
-    st.markdown("Right now, Citi Bikes runs into a situation where customers complain about bikes not being available at certain times. This analysis will look at the potential reasons behind this. The dashboard is separated into 5 sections:")
+    st.markdown("##### Citi Bikes, which is a bike-sharing facility in NYC, runs into a situation where customers complain about bikes not being available at certain times. This analysis will look at the potential reasons behind this. We'll be reviewing some key insights from the CitiBike dashboard to provide helpful insights on the expansion problems Citi Bikes currently faces, which is separated into 5 sections:")
     st.markdown("- Most popular stations")
     st.markdown("- Weather component and bike usage")
     st.markdown("- Interactive map with aggregated bike trips")
     st.markdown("- Classic versus electric bikes")
     st.markdown("- Recommendations")
+    st.markdown("##### We'll break down the dashboard's insights by answering the following questions:")
+    st.markdown("- How much would we recommend scaling bikes back between November and April?")
+    st.markdown("- How can we determine how many more stations to add along the waterfront?")
+    st.markdown("- What are some strategies for ensuring bikes are always stocked at popular stations?")
     st.markdown("The dropdown menu on the left 'Aspect Selector' will take you to the different aspects of the analysis our team looked at.")
 
     myImage = Image.open("citi_bike_logo.png") 
