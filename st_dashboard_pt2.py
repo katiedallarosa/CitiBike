@@ -36,13 +36,13 @@ df_hist = pd.read_csv('hist_data_small.csv')
 ### INTRO PAGE
 
 if page == "Introduction":
-    st.markdown("##### Citi Bikes, which is a bike-sharing facility in NYC, runs into a situation where customers complain about bikes not being available at certain times. This analysis will look at the potential reasons behind this. We'll be reviewing some key insights from the CitiBike dashboard to provide helpful insights on the expansion problems Citi Bikes currently faces, which is separated into 5 sections:")
+    st.markdown("##### Citi Bikes, which is a bike-sharing facility in NYC, runs into a situation where customers complain about bikes not being available at certain times. This analysis will look at the potential reasons behind this. We'll be reviewing key insights from the Citi Bike dashboard to provide helpful insights on the expansion problems Citi Bikes currently faces, which is separated into 5 sections:")
     st.markdown("- Most popular stations")
     st.markdown("- Weather component and bike usage")
     st.markdown("- Interactive map with aggregated bike trips")
     st.markdown("- Classic versus electric bikes")
     st.markdown("- Recommendations")
-    st.markdown("##### We'll break down the dashboard's insights by answering the following questions:")
+    st.markdown("##### We will be answering the following questions:")
     st.markdown("- How much would we recommend scaling bikes back between November and April?")
     st.markdown("- How can we determine how many more stations to add along the waterfront?")
     st.markdown("- What are some strategies for ensuring bikes are always stocked at popular stations?")
@@ -74,7 +74,7 @@ elif page == 'Weather component and bike usage':
 )
     
     st.plotly_chart(fig_2, use_container_width=True)
-    st.markdown("This graph from the CitiBike Strategy Dashboard shows the relationship between daily bike rides and daily temperature fluctuations throughout the year. The data is in relation to the bike stations in New York City from January 2022 to December 2022.")
+    st.markdown("This graph from the Citi Bike Strategy Dashboard shows the relationship between daily bike rides and daily temperature fluctuations throughout the year. The data is in relation to the bike stations in New York City from January 2022 to December 2022.")
     st.markdown("Looking at the data from November to April, we observe a significant drop in bike usage compared to the warmer months. As expected, colder weather and potential inclement conditions contribute to a lower demand for bikes.")
     st.markdown("This data underscores the importance of seasonal adjustments in fleet management and bike stocking strategies.")
 
@@ -97,14 +97,14 @@ elif page == 'Most popular stations':
     # Bar chart 
     fig = go.Figure(go.Bar(x = top20['start_station_name'], y = top20['value'], marker = {'color' : top20['value'], 'colorscale' : 'Blues'}))
     fig.update_layout(
-        title = 'Top 20 Most Popular Bike Stations in New York',
+        title = 'Top 20 Most Popular Bike Stations in New York City',
         xaxis_title = 'Start Stations', 
         yaxis_title = 'Sum of Trips', 
         width = 900, height = 600
 )
     
     st.plotly_chart(fig, use_container_width = True)
-    st.markdown("This bar chart from the CitiBike Strategy Dashboard highlights the top 20 most popular bike stations in New York based on total bike rides, which amount to 372.38K in this dataset. The stations are ranked by the number of trips starting at each location.")
+    st.markdown("This bar chart highlights the top 20 most popular bike stations in New York City based on total bike rides, which amount to 372.38K in this dataset. The stations are ranked by the number of trips starting at each location.")
     st.markdown("Taking a closer look at the stations situated along the waterfront, we can observe that stations near parks, tourist areas, and walking paths along the water tend to experience higher traffic, particularly during the warmer months.")
     st.markdown("This data is crucial for optimizing bike availability and managing peak-time shortages at the busiest locations.")
 
@@ -169,7 +169,6 @@ else:
     bikes = Image.open("bike.jpg")  #source: https://unsplash.com/photos/blue-citi-bike-bicycles-parked-on-sidewalk-8ol9rD0BHAU?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
     st.image(bikes)
     st.markdown("### Our analysis has shown that Citi Bikes should focus on the following objectives moving forward:")
-    st.markdown("- Scale back bikes between November and April by 30-40% would optimize resources without reducing service quality in key areas.")
-    st.markdown("- Add more stations along the waterfront should be data-driven, with a potential 10-15% increase to close gaps in high-demand areas.")
-    st.markdown("- Ensure bikes are stocked at popular stations can be addressed through real-time rebalancing, automated stocking schedules, and rider incentives.")
-    st.markdown("- Place more electric bikes in high-demand areas, where classic bike rentals peak, to provide alternatives and manage load during high usage times.")
+    st.markdown("- During the months of November through April, scale back the number of bikes by around 30-40%s. This is based on the sharp decrease in ridership during colder months and would help optimize operational costs without negatively affecting rider experience in key areas that still see moderate demand.")
+    st.markdown("- To determine how many new stations to add, we would use demand forecasting based on current usage trends at nearby stations, population density, and tourist traffic data. Starting with a 10-15% increase in stations at underserved sections of the waterfront would be a reasonable initial step.")
+    st.markdown("- Ensuring bikes are stocked at popular stations would involve real-time rebalancing, dynamic stocking schedules based on peak usage times, and possibly offering incentives for riders to return bikes to underutilized stations. Increasing docking capacity at high-demand locations during peak hours could also prevent shortages.")
