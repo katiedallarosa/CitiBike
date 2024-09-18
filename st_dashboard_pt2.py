@@ -64,14 +64,16 @@ elif page == 'Weather component and bike usage':
 )
 
     fig_2.update_layout(
-        title = 'Top 20 most popular bike stations in New York', 
+        title = 'Temperature vs Rides in New York City', 
         xaxis_title = 'Start stations',
         yaxis_title = 'Sum of trips',
         height = 400
 )
     
     st.plotly_chart(fig_2, use_container_width=True)
-    st.markdown("There is an obvious correlation between the rise and drop of temperatures and their relationship with the frequency of bike trips taken daily. As temperatures plunge, so does bike usage. This insight indicates that the shortage problem may be prevalent merely in the warmer months, approximately from May to October.")
+    st.markdown("This graph from the CitiBike Strategy Dashboard shows the relationship between daily bike rides and daily temperature fluctuations throughout the year. The data is in relation to the bike stations in New York City from January 2022 to December 2022.")
+    st.markdown("Looking at the data from November to April, we observe a significant drop in bike usage compared to the warmer months. As expected, colder weather and potential inclement conditions contribute to a lower demand for bikes.")
+    st.markdown("This data underscores the importance of seasonal adjustments in fleet management and bike stocking strategies.")
 
     
 ### BAR CHART PAGE: MOST POPULAR STATIONS
@@ -99,7 +101,9 @@ elif page == 'Most popular stations':
 )
     
     st.plotly_chart(fig, use_container_width = True)
-    st.markdown("From the bar chart it is clear that there are some start stations that are more popular than others - in the top 3 are 6 Ave/W 33 St, West St/Chambers St, and Broadway/W 58 St. There is a significant jump between the highest and lowest bars of the plot, indicating some clear preferences for the leading stations. This is a finding that we could cross reference with the interactive map with aggregated bike trips.")
+    st.markdown("This bar chart from the CitiBike Strategy Dashboard highlights the top 20 most popular bike stations in New York based on total bike rides, which amount to 372.38K in this dataset. The stations are ranked by the number of trips starting at each location.")
+    st.markdown("Taking a closer look at the stations situated along the waterfront, we can observe that stations near parks, tourist areas, and walking paths along the water tend to experience higher traffic, particularly during the warmer months.")
+    st.markdown("This data is crucial for optimizing bike availability and managing peak-time shortages at the busiest locations.")
 
 
 ### MAP PAGE: INTERACTIVE MAP WITH AGGREGATED BIKE TRIPS
@@ -116,12 +120,12 @@ elif page == 'Interactive map with aggregated bike trips':
         html_data = f.read()
 
     # Show in webpage
-    st.header("Aggregated Bike Trips in New York City")
     st.components.v1.html(html_data,height=800)
     st.markdown("#### Using the filter on the left hand side of the map we can check whether the most popular start stations also appear in the most popular trips.")
-    st.markdown("The most popular start stations are:")
-    st.markdown("West St/Chambers St, Broadway/W 58 St and 6 Ave/W 33 St. While having the aggregated bike trips filter enabled, it is apparent that even though 6 Ave/W 33 St is a popular start station, it doesn't account for the most commonly taken trips.")
+    st.markdown("The most popular start stations are West St/Chambers St, Broadway/W 58 St and 6 Ave/W 33 St. While having the aggregated bike trips filter enabled, it is apparent that even though 6 Ave/W 33 St is a popular start station, it doesn't account for the most commonly taken trips.")
     st.markdown("Some of the most common routes are between 12 Ave/W 40 St, 10 Ave/W 14 St, and West St/Chambers St, which are located along the water, or routes located around the perimeter of Central Park.")
+    st.markdown("This map reveals critical routes and areas that are essential for bike redistribution and station expansion efforts, helping optimize bike availability in high-demand areas.")
+
 
 
 ### HISTOGRAMS: CLASSIC VERSUS ELECTRIC BIKES
@@ -150,7 +154,7 @@ elif page == "Classic versus electric bikes":
     # Display the figure
     st.plotly_chart(fig3)
 
-    st.markdown('The data shows that classic bikes are rented more often when the temperature is warmer. Electric bikes are rented slightly more often when the temperature is warmer, however relative to classic bikes, electric bike rentals do not change much with the temperature.')
+    st.markdown('Classic bikes are rented significantly more often when the temperature is warmer, with a clear increase in rentals as temperatures rise. In contrast, electric bike rentals exhibit less variability with temperature, showing a relatively steady usage pattern.')
     st.markdown('Additionally, the data shows that classic bikes are rented over 2.5 times more often than electric bikes. This limited electric bike availability helps to explain why their rental does not change much with the weather, as they may simply not be an option most of the time.')
     
     
@@ -162,6 +166,7 @@ else:
     bikes = Image.open("bike.jpg")  #source: https://unsplash.com/photos/blue-citi-bike-bicycles-parked-on-sidewalk-8ol9rD0BHAU?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash
     st.image(bikes)
     st.markdown("### Our analysis has shown that Citi Bikes should focus on the following objectives moving forward:")
-    st.markdown("- There is a clear popularity among the stations along the water and around Central Park. I recommend adding bikes and bike parking to these locations.")
-    st.markdown("- There is a clear correlation between temperature and bike trips. Ensure that bikes are fully stocked in all these stations during the warmer months in order to meet the higher demand, but provide a lower supply in winter and late autumn to reduce logistics costs")
-    st.markdown("- Classic bikes are rented over 2.5 times more often than electric bikes due to limited electric bike availability. I recommend incorporating more electric bikes into circulation when new bikes are added.")
+    st.markdown("- Scale back bikes between November and April by 30-40% would optimize resources without reducing service quality in key areas.")
+    st.markdown("- Add more stations along the waterfront should be data-driven, with a potential 10-15% increase to close gaps in high-demand areas.")
+    st.markdown("- Ensure bikes are stocked at popular stations can be addressed through real-time rebalancing, automated stocking schedules, and rider incentives.")
+    st.markdown("- Place more electric bikes in high-demand areas, where classic bike rentals peak, to provide alternatives and manage load during high usage times.")
